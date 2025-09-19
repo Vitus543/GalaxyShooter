@@ -12,10 +12,10 @@
       height="608"
       style="width: 1080px; height: 608px; background: #231f20"
     ></canvas>
-    <script src="Build/GalaxyShooter.loader.js"></script>
+    <script id="script_onload" src="Build/GalaxyShooter.loader.js"></script>
 
     <script>
-      let tst = null;
+      let unityInstance = null;
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
         var meta = document.createElement("meta");
@@ -31,7 +31,9 @@
 
         document.body.style.textAlign = "left";
       }
-      script.onload = () => {
+      var body = document.querySelector("#script_onload");
+
+      body.onload = () => {
         createUnityInstance(document.querySelector("#unity-canvas"), {
           dataUrl: "Build/GalaxyShooter.data",
           frameworkUrl: "Build/GalaxyShooter.framework.js",
@@ -42,10 +44,10 @@
           productVersion: "0.1",
           showBanner: unityShowBanner,
         }).then((unityInstance) => {
-          tst = unityInstance.SetFullscreen(1);
+          unityInstance = unityInstance.SetFullscreen(1);
         });
       };
     </script>
-    <button onclick="tst.SetFullscreen(1)">Click me</button>
+    <button onclick="unityInstance.SetFullscreen(1)">Click me</button>
   </body>
 </html>
