@@ -31,19 +31,21 @@
 
         document.body.style.textAlign = "left";
       }
-
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/GalaxyShooter.data",
-        frameworkUrl: "Build/GalaxyShooter.framework.js",
-        codeUrl: "Build/GalaxyShooter.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "DefaultCompany",
-        productName: "Galaxy Shooter",
-        productVersion: "0.1",
-        showBanner: unityShowBanner,
-      }).then((unityInstance) => {
-        tst = unityInstance.SetFullscreen(1);
-      });
+      script.onload = () => {
+        createUnityInstance(document.querySelector("#unity-canvas"), {
+          dataUrl: "Build/GalaxyShooter.data",
+          frameworkUrl: "Build/GalaxyShooter.framework.js",
+          codeUrl: "Build/GalaxyShooter.wasm",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "DefaultCompany",
+          productName: "Galaxy Shooter",
+          productVersion: "0.1",
+          showBanner: unityShowBanner,
+        }).then((unityInstance) => {
+          tst = unityInstance.SetFullscreen(1);
+        });
+      };
     </script>
+    <button onclick="tst.SetFullscreen(1)">Click me</button>
   </body>
 </html>
